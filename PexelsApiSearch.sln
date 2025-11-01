@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36203.30
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-PRESENTATION", "1-PRESENTATION", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-DOMAIN", "0-DOMAIN", "{EF7468A3-A164-401D-87A2-E5FA7C17ECE7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-APPLICATION", "2-APPLICATION", "{2D096757-CAE5-4E4C-AB9E-B451E7B0FEA3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-INFRA", "3-INFRA", "{54779A02-C93E-407A-8B44-8FC1CF2F468B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PexelApiSearch.Domain", "PexelApiSearch.Domain\PexelApiSearch.Domain.csproj", "{E1CAC762-6DA1-47A6-A0A0-5C6CA472F2CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PexelApiSearch.Application", "PexelApiSearch.Application\PexelApiSearch.Application.csproj", "{98285F22-E09C-4BEA-95E0-C9EE760B9786}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PexelApiSearch.Infra", "PexelApiSearch.Infra\PexelApiSearch.Infra.csproj", "{1D0261ED-D3E6-4EA7-ADD7-0BA93DC21302}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PexelsApiSearch.Api", "PexelsApiSearch\PexelsApiSearch.Api\PexelsApiSearch.Api.csproj", "{7D77E241-6761-4780-B96B-124BBCA3EE42}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1CAC762-6DA1-47A6-A0A0-5C6CA472F2CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1CAC762-6DA1-47A6-A0A0-5C6CA472F2CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1CAC762-6DA1-47A6-A0A0-5C6CA472F2CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1CAC762-6DA1-47A6-A0A0-5C6CA472F2CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98285F22-E09C-4BEA-95E0-C9EE760B9786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98285F22-E09C-4BEA-95E0-C9EE760B9786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98285F22-E09C-4BEA-95E0-C9EE760B9786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98285F22-E09C-4BEA-95E0-C9EE760B9786}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D0261ED-D3E6-4EA7-ADD7-0BA93DC21302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D0261ED-D3E6-4EA7-ADD7-0BA93DC21302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D0261ED-D3E6-4EA7-ADD7-0BA93DC21302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D0261ED-D3E6-4EA7-ADD7-0BA93DC21302}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D77E241-6761-4780-B96B-124BBCA3EE42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D77E241-6761-4780-B96B-124BBCA3EE42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D77E241-6761-4780-B96B-124BBCA3EE42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D77E241-6761-4780-B96B-124BBCA3EE42}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E1CAC762-6DA1-47A6-A0A0-5C6CA472F2CE} = {EF7468A3-A164-401D-87A2-E5FA7C17ECE7}
+		{98285F22-E09C-4BEA-95E0-C9EE760B9786} = {2D096757-CAE5-4E4C-AB9E-B451E7B0FEA3}
+		{1D0261ED-D3E6-4EA7-ADD7-0BA93DC21302} = {54779A02-C93E-407A-8B44-8FC1CF2F468B}
+		{7D77E241-6761-4780-B96B-124BBCA3EE42} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A504BA3B-B567-48B3-8F99-7F86EEB85A00}
+	EndGlobalSection
+EndGlobal
