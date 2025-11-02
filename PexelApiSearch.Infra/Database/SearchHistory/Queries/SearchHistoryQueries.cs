@@ -8,12 +8,23 @@
         ";
 
         public const string SelectPaged = @"
-            SELECT * 
-            FROM SearchHistory
-            where Query like CONCAT('%', @QueryText, '%')
-            ORDER BY SearchDate DESC
+            SELECT 
+                sh.Id,
+                sh.Query,
+                sh.SearchDate
+            FROM SearchHistory sh
+            INNER JOIN (
+                SELECT 
+                    Query,
+                    MAX(SearchDate) AS MaxDate
+                FROM SearchHistory
+                WHERE Query LIKE CONCAT('%', @QueryText, '%')
+                GROUP BY Query
+            ) grouped ON sh.Query = grouped.Query AND sh.SearchDate = grouped.MaxDate
+            ORDER BY sh.SearchDate DESC
             LIMIT @PageSize OFFSET @Offset;
         ";
+
 
         public const string CountAll = @"
             SELECT COUNT(*) FROM SearchHistory;

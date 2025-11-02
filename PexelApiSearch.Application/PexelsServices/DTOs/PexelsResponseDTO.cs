@@ -41,7 +41,7 @@ namespace PexelApiSearch.Application.PexelsServices.DTOs
         public string PhotographerUrl { get; set; }
 
         [JsonPropertyName("photographer_id")]
-        public int PhotographerId { get; set; }
+        public decimal PhotographerId { get; set; }
 
         [JsonPropertyName("avg_color")]
         public string AvgColor { get; set; }
