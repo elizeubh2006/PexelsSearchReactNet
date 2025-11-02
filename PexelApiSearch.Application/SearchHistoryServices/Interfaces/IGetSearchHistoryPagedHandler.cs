@@ -9,6 +9,6 @@ namespace PexelApiSearch.Application.SearchHistoryServices.Interfaces
 {
     public interface IGetSearchHistoryPagedHandler
     {
-        Task<(IEnumerable<SearchHistory> Items, int Total)> HandleAsync(int page, int pageSize);
+        Task<(IEnumerable<SearchHistory> Items, int Total)> HandleAsync(string queryText, int page, int pageSize);
     }
 }

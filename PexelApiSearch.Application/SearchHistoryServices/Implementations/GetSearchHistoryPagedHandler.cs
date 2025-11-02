@@ -11,9 +11,9 @@ namespace PexelApiSearch.Application.SearchHistoryServices.Implementations
         {
             _repo = repo;
         }
-        public async Task<(IEnumerable<SearchHistory> Items, int Total)> HandleAsync(int page, int pageSize)
+        public async Task<(IEnumerable<SearchHistory> Items, int Total)> HandleAsync(string queryText, int page, int pageSize)
         {
-            return await _repo.GetPagedAsync(page, pageSize);
+            return await _repo.GetPagedAsync(queryText, page, pageSize);
         }
     }
 }

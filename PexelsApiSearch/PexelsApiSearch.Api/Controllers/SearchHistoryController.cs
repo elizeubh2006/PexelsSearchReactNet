@@ -16,9 +16,9 @@ namespace PexelsApiSearch.Api.Controllers
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> GetSearchHistory(int page = 1, int pageSize = 10)
+        public async Task<IActionResult> GetSearchHistory(string queryText, int page = 1, int pageSize = 10)
         {
-            var result = await _getHistory.HandleAsync(page, pageSize);
+            var result = await _getHistory.HandleAsync(queryText, page, pageSize);
 
             return Ok(new
             {

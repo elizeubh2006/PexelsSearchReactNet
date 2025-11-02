@@ -21,7 +21,7 @@ namespace PexelApiSearch.Infra.SearchHistoryServices.Repository
             await connection.ExecuteAsync(SearchHistoryQueries.Insert, history);
         }
 
-        public async Task<(IEnumerable<SearchHistory> Items, int Total)> GetPagedAsync(int page, int pageSize)
+        public async Task<(IEnumerable<SearchHistory> Items, int Total)> GetPagedAsync(string queryText, int page, int pageSize)
         {
             using var connection = _context.CreateConnection();
 
@@ -29,7 +29,7 @@ namespace PexelApiSearch.Infra.SearchHistoryServices.Repository
 
             var items = await connection.QueryAsync<SearchHistory>(
                 SearchHistoryQueries.SelectPaged,
-                new { PageSize = pageSize, Offset = offset });
+                new {QueryText  = queryText,  PageSize = pageSize, Offset = offset });
 
             var total = await connection.ExecuteScalarAsync<int>(SearchHistoryQueries.CountAll);
 

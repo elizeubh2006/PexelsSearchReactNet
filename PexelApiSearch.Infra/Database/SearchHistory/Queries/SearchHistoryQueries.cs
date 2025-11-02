@@ -10,6 +10,7 @@
         public const string SelectPaged = @"
             SELECT * 
             FROM SearchHistory
+            where Query like CONCAT('%', @QueryText, '%')
             ORDER BY SearchDate DESC
             LIMIT @PageSize OFFSET @Offset;
         ";
