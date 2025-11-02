@@ -1,0 +1,6 @@
+services:
+  pexelsapisearch.api:
+    image: ${DOCKER_REGISTRY-}pexelsapisearchapi
+    build:
+      context: .
+      dockerfile: PexelsApiSearch/PexelsApiSearch.Api/Dockerfile
