@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PexelApiSearch.Application.PexelsServices.Interfaces;
+using PexelApiSearch.Application.SearchHistoryServices.Interfaces;
 using PexelApiSearch.Domain.Entities;
 using System.Diagnostics;
 
@@ -11,9 +12,11 @@ namespace PexelsApiSearch.Api.Controllers
     public class PhotosController : ControllerBase
     {
         private readonly IPexelsSearchService _searchService;
-        public PhotosController(IPexelsSearchService pexelsSearchService)
+        private readonly ICreateSearchHistoryHandler _createSearchHistoryHandler;
+        public PhotosController(IPexelsSearchService pexelsSearchService, ICreateSearchHistoryHandler createHistHandler)
         {
             _searchService = pexelsSearchService;
+            _createSearchHistoryHandler = createHistHandler;
         }
 
         [HttpGet("search")]
@@ -23,6 +26,11 @@ namespace PexelsApiSearch.Api.Controllers
             try
             {
                 var result = await _searchService.PhotoSearch(query, page, per_page);
+                bool resultOk = await _createSearchHistoryHandler.CreateHandleAsync(query);
+                if (resultOk)
+                {
+                    //salvar um log
+                }
                 return Ok(result);
 
             }

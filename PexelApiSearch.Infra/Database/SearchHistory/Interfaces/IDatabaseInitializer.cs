@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PexelApiSearch.Infra.Data.Interfaces
+namespace PexelApiSearch.Infra.Database.SearchHistory.Interfaces
 {
     public interface IDatabaseInitializer
     {

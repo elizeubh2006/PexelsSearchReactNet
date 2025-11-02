@@ -2,7 +2,7 @@
 using PexelApiSearch.Application.PexelsServices.DTOs;
 using PexelApiSearch.Domain.Entities;
 
-namespace PexelApiSearch.Application.Mappings
+namespace PexelApiSearch.Application.PexelsServices.Mappings
 {
     public class PexelsProfile : Profile
     {

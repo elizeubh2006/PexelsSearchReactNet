@@ -1,6 +1,43 @@
+version: '3.4'
+
 services:
+  # ------------------------------
+  # MySQL Database
+  # ------------------------------
+  mysql:
+    image: mysql:8.0
+    container_name: pexels_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: PexelsDb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p123456"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ------------------------------
+  # ASP.NET API
+  # ------------------------------
   pexelsapisearch.api:
     image: ${DOCKER_REGISTRY-}pexelsapisearchapi
     build:
       context: .
       dockerfile: PexelsApiSearch/PexelsApiSearch.Api/Dockerfile
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      - ConnectionStrings__DefaultConnection=server=mysql;port=3306;database=PexelsDb;user=root;password=123456
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+
+volumes:
+  mysql_data:

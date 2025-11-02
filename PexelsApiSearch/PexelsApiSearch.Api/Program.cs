@@ -1,13 +1,18 @@
-using PexelApiSearch.Application.Mappings;
 using PexelApiSearch.Application.PexelsServices.Implementations;
 using PexelApiSearch.Application.PexelsServices.Interfaces;
+using PexelApiSearch.Application.PexelsServices.Mappings;
+using PexelApiSearch.Application.SearchHistoryServices.Implementations;
+using PexelApiSearch.Application.SearchHistoryServices.Interfaces;
+using PexelApiSearch.Infra.Database.Dapper;
+using PexelApiSearch.Infra.Database.SearchHistory.Implementations;
 using PexelApiSearch.Infra.PexelsExternalServices.Services.Implementations;
+using PexelApiSearch.Infra.SearchHistoryServices.Repository;
 
 namespace PexelsApiSearch.Api
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -18,9 +23,20 @@ namespace PexelsApiSearch.Api
             builder.Services.AddHttpClient<IPexelsExternalService, PexelsExternalService>();
             builder.Services.AddAutoMapper(typeof(PexelsProfile));
             builder.Services.AddScoped<IPexelsSearchService, PexelsSearchService>();
+            builder.Services.AddScoped<DatabaseInitializer>();
+            builder.Services.AddScoped<DapperContext>();
 
+            builder.Services.AddScoped<IGetSearchHistoryPagedHandler, GetSearchHistoryPagedHandler>();
+            builder.Services.AddScoped<ICreateSearchHistoryHandler, CreateSearchHistoryHandler>();
+            builder.Services.AddScoped<ISearchHistoryRepository, SearchHistoryRepository>();
 
             var app = builder.Build();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var initializer = scope.ServiceProvider.GetRequiredService<DatabaseInitializer>();
+                await initializer.InitializeAsync();
+            }
 
             // Configure the HTTP request pipeline.
 
@@ -30,6 +46,11 @@ namespace PexelsApiSearch.Api
 
 
             app.MapControllers();
+
+
+
+
+
 
             app.Run();
         }

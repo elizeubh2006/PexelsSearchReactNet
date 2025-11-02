@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
-using PexelApiSearch.Infra.Data.Interfaces;
 using Dapper;
 using MySql.Data.MySqlClient;
+using PexelApiSearch.Infra.Database.SearchHistory.Interfaces;
 
-namespace PexelApiSearch.Infra.Data.Implementations
+namespace PexelApiSearch.Infra.Database.SearchHistory.Implementations
 {
     public class DatabaseInitializer : IDatabaseInitializer
     {
