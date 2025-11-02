@@ -2,6 +2,7 @@
 {
     public class PexelsSearchResult
     {
+        public string Id { get; set; }
         public DateTime SearchDate { get; set; }
         public double ElapsedSeconds { get; set; }
         public string OriginalUrl { get; set; }

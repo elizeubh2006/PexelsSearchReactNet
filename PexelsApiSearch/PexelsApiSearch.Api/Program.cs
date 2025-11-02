@@ -30,7 +30,21 @@ namespace PexelsApiSearch.Api
             builder.Services.AddScoped<ICreateSearchHistoryHandler, CreateSearchHistoryHandler>();
             builder.Services.AddScoped<ISearchHistoryRepository, SearchHistoryRepository>();
 
+#if(DEBUG)
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowLocalhost",
+                    policy => policy
+                        .WithOrigins("http://localhost:5173")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
+#endif
             var app = builder.Build();
+
+#if(DEBUG)
+            app.UseCors("AllowLocalhost");
+#endif
 
             using (var scope = app.Services.CreateScope())
             {
